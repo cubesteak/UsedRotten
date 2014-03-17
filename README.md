@@ -8,6 +8,8 @@ This is a very simple plugin for Bukkit.  Others have done it, but have lagged a
 It adds:
  - 4 rotten flesh in a 2x2 pattern on a crafting table will make 1 leather.
  - Rotten Flesh is also now cookable in a furnace to make leather.
+
+Written for CraftBukkit Beta Build (1.7.2-R0.3)
  
 To do:
 
