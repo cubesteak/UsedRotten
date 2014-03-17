@@ -13,6 +13,12 @@ Permission:
  - The permission UsedRotten.Crafting allows people to craft flesh to leather.
  - Working on a furnace permission, but none yet.
 
+File:
+ - Plugin jar file is available at https://drive.google.com/file/d/0Bxs-2GyuqfD9VVhhaFU4dW43eFk/
+
+Install:
+ - Download the jar file and place in server plugins directory.
+ - Add permission for crafting if desired.
 
 Written for CraftBukkit Beta Build (1.7.2-R0.3)
  
