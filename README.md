@@ -29,3 +29,7 @@ To do:
  - See if I can get a furnace to consume more than 1 flesh per leather created.
  - Allow one or both to be used via configuration file
  - Allow configuration of output for both using a furnace or a Crafting Table
+ 
+ Thanks:
+ 
+  - Using THDigi / RecipeUtil for recipe comapres. http://goo.gl/c9Mcsi
