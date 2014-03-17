@@ -26,7 +26,7 @@ public class UsedRotten extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		getLogger().info("Thanks for having UsedRotten!");
+		getLogger().info("Thank you for having UsedRotten!");
 	}
 	
 }
