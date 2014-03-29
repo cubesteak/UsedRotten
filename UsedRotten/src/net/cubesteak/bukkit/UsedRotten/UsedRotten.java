@@ -47,7 +47,7 @@ public class UsedRotten extends JavaPlugin implements Listener {
 	        boolean equal = RecipeUtil.areEqual(event.getRecipe(), leather);
 	        
 	        // confirmation message of event triggering and recipe equality
-	        System.out.print("(debug) recipes equal = " + equal);
+	        // System.out.print("(debug) recipes equal = " + equal);
 	        
 	        if(equal)
 	        {
