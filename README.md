@@ -19,25 +19,21 @@ Configuration:
  
  - 1: A single Rotten on a will give Leather:
 ```
-
 R
 ```
 
  - 2: Two Rotten horizontally will give Leather:
 ```
-
 RR
 ```
  - 4: Four Rotten in a 2x2 shape will give Leather:
 ```
-
 RR
 RR
 ```
 
  - 6: Six Rotten in a 3x2 shape will give Leather:
 ```
-
 RRR
 RRR
 ```
