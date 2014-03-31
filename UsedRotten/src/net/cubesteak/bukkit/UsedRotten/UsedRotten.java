@@ -1,6 +1,7 @@
 package net.cubesteak.bukkit.UsedRotten;
 
 import org.bukkit.Server;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -17,27 +18,63 @@ import ro.thehunters.digi.recipeUtil.RecipeUtil;
 public class UsedRotten extends JavaPlugin implements Listener {
 
 	private ShapedRecipe leather;
+	private Boolean ConfigRottenCrafting;
+	private Integer ConfigRottenCraftingShape;
+	private Boolean ConfigRottenSmelting;
+	private Integer ReadShape;
 	
 	@Override
 	public void onEnable() {
 		getLogger().info("Ready to have UsedRotten!");
 		Server server = this.getServer();
 
-		server.getPluginManager().registerEvents(this, this);
+		initializeConfig(); // Initialize the configuration
+		ConfigRottenCrafting = getConfig().getBoolean("UsedRotten.RottenCrafting");
+		ConfigRottenSmelting = getConfig().getBoolean("UsedRotten.RottenSmelting");
+		ConfigRottenCraftingShape = getConfig().getInt("UsedRotten.CraftingShape");
 		
+		
+		if (ConfigRottenCrafting) {
 		leather = new ShapedRecipe(new ItemStack(Material.LEATHER));
-		leather.shape("FF","FF");
+		
+		// Setting the Shape Used
+		switch (ConfigRottenCraftingShape) {
+		case 1: leather.shape("F"); ReadShape = 1; break;
+		case 2: leather.shape("FF"); ReadShape = 2; break;
+		case 4: leather.shape("FF","FF"); ReadShape = 4; break;
+		case 6: leather.shape("FFF","FFF"); ReadShape = 6; break;
+		case 9: leather.shape("FFF","FFF","FFF"); ReadShape = 9; break;
+		default: leather.shape("FF","FF"); ReadShape = 4; break;
+		}
+		getLogger().info("Using " + ReadShape + " Rotten for Crafting");  // Log read Shape
+		
 		leather.setIngredient('F', Material.ROTTEN_FLESH);
 		server.addRecipe(leather);
+		}
 		
-		FurnaceRecipe cookedleather = new FurnaceRecipe(new ItemStack(Material.LEATHER), (Material.ROTTEN_FLESH));
-		server.addRecipe(cookedleather);
+		if (ConfigRottenSmelting){
+			FurnaceRecipe cookedleather = new FurnaceRecipe(new ItemStack(Material.LEATHER), (Material.ROTTEN_FLESH));
+			server.addRecipe(cookedleather);
+		}
+		
 	}
 	
 	@Override
 	public void onDisable() {
 		getLogger().info("Thank you for having UsedRotten!");
 	}
+	
+	private void initializeConfig() {
+		FileConfiguration config = getConfig(); 
+		
+		config.addDefault("UsedRotten.RottenCrafting", true);
+		config.addDefault("UsedRotten.CraftingShape", 4);
+		config.addDefault("UsedRotten.RottenSmelting", true);
+		
+		config.options().copyDefaults(true);
+		saveConfig();
+	}
+	
 	
 	 @EventHandler
 	    public void preCraft(PrepareItemCraftEvent event) // event is triggered when a recipe is found after placing ingredients
