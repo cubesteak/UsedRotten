@@ -18,27 +18,28 @@ Configuration:
  Additionally, it allows you to pick how many Rotten are used for crafting.  The Crafting options are:
  
  - 1: A single Rotten on a will give Leather:
- R
+
+|R  |
 
  - 2: Two Rotten horizontally will give Leather:
 
-RR
+|RR |
 
  - 4: Four Rotten in a 2x2 shape will give Leather:
 
-RR
-RR
+|RR |
+|RR |
 
  - 6: Six Rotten in a 3x2 shape will give Leather:
 
-RRR
-RRR
+|RRR|
+|RRR|
   														
  - 9: Nine Rotten in a 3x3 shape will give Leather:
 
-RRR
-RRR
-RRR
+|RRR|
+|RRR|
+|RRR|
 
 Source Code:
 https://github.com/cubesteak/UsedRotten
