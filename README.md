@@ -6,10 +6,12 @@ Making Rotten Flesh useful in Bukkit.
 This is a very simple plugin for Bukkit.  Others have done it, but have lagged a bit behind bukkit updates.
 
 It adds:
+
  - rotten flesh in a configurable pattern on a crafting table will make 1 leather.  Default is 4 Rotten in a 2x2 pattern.
  - Rotten Flesh is also now cookable in a furnace to make leather.
 
 Permissions:
+
  - The permission UsedRotten.Crafting allows people to craft flesh to leather.
  - Working on a furnace permission, but none yet.
 
@@ -18,9 +20,8 @@ Configuration:
  Additionally, it allows you to pick how many Rotten are used for crafting.  The Crafting options are:
  
  - 1: A single Rotten on a will give Leather:
-```
+>
 R
-```
 
  - 2: Two Rotten horizontally will give Leather:
 ```
@@ -49,7 +50,9 @@ Source Code:
 https://github.com/cubesteak/UsedRotten
 
 Install:
+
  - Download the jar file (from Files section) and place in server plugins directory.
+ - Set config file options to turn crafting and smelting on or off
  - Add permission for crafting if desired.
 
 Written for CraftBukkit Beta Build (1.7.2-R0.3)
