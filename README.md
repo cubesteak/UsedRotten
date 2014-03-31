@@ -24,27 +24,24 @@ Configuration:
 R
 
  - 2: Two Rotten horizontally will give Leather:
-```
+>
 RR
-```
+
  - 4: Four Rotten in a 2x2 shape will give Leather:
-```
+>
 RR
 RR
-```
 
  - 6: Six Rotten in a 3x2 shape will give Leather:
-```
+>
 RRR
 RRR
-```
 													
  - 9: Nine Rotten in a 3x3 shape will give Leather:
-```
+>
 RRR
 RRR
 RRR
-```
 
 Source Code:
 https://github.com/cubesteak/UsedRotten
