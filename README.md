@@ -13,23 +13,24 @@ Permissions:
  - The permission UsedRotten.Crafting allows people to craft flesh to leather.
  - Working on a furnace permission, but none yet.
 
- Configuration:
+Configuration:
  The configuration file allows turning Crafting and Smelting of Rotten on or off.
  Additionally, it allows you to pick how many Rotten are used for crafting.  The Crafting options are:
  
-  - 1: A single Rotten on a will give Leather: 			R
+ - 1: A single Rotten on a will give Leather: 			R
 
-  - 2: Two Rotten horizontally will give Leather: 		RR
+ - 2: Two Rotten horizontally will give Leather: 		RR
 
-  - 4: Four Rotten in a 2x2 shape will give Leather:	RR
+ - 4: Four Rotten in a 2x2 shape will give Leather:		RR
   														RR
 
-  - 6: Six Rotten in a 3x2 shape will give Leather:		RRR
+ - 6: Six Rotten in a 3x2 shape will give Leather:		RRR
   														RRR
   														
-  - 9: Nine Rotten in a 3x3 shape will give Leather		RRR
+ - 9: Nine Rotten in a 3x3 shape will give Leather		RRR
   														RRR
   														RRR
+
 Source Code:
 https://github.com/cubesteak/UsedRotten
 
@@ -50,6 +51,6 @@ To do:
  - See if I can get a furnace to consume more than 1 flesh per leather created.
  - Allow configuration of output for both using a furnace or a Crafting Table
  
- Thanks:
- 
+
+Thanks:
   - Using THDigi / RecipeUtil for recipe compares.
