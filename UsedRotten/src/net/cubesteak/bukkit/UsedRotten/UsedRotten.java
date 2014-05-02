@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
@@ -127,5 +128,27 @@ public class UsedRotten extends JavaPlugin implements Listener {
                 player.sendMessage("Need permission to craft this!");
             }
         }
+    }
+
+    /**
+     * Monitor CraftItemEvent.
+     *
+     * @param event The event to monitor
+     */
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onCraftItem(CraftItemEvent event) {
+        final HumanEntity whoClicked = event.getWhoClicked();
+
+        if (!(whoClicked instanceof Player)) {
+            return;
+        }
+
+        ItemStack result = event.getRecipe().getResult();
+
+        if (!result.isSimilar(new ItemStack(Material.LEATHER))) {
+            return;
+        }
+
+        new PlayerUpdateInventoryTask((Player) whoClicked).runTaskLater(this, 0);
     }
 }
