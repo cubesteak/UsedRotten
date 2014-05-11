@@ -1,4 +1,4 @@
-package net.cubesteak.bukkit.UsedRotten;
+package net.cubesteak.mcbk.UsedRotten;
 
 import org.bukkit.Material;
 import org.bukkit.Server;

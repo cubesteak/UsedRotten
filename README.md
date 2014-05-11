@@ -55,9 +55,14 @@ Install:
 Written for CraftBukkit Beta Build (1.7.2-R0.3)
  
 Releases:
-0.2 - Latest. Adds config file, multiple crafting shapes and ability to enable crafting or smelting at a global level.
+0.3 - Latest. Bug fix for crafting multiple items at once, code cleanup and package name change to remove bukkit from the name.  Big thanks to TfT-02 for the help!
+0.2 -  Adds config file, multiple crafting shapes and ability to enable crafting or smelting at a global level.
 0.11 - Just removes left over debug lines.
 0.1 - Initial release
+
+Known Issues:
+
+ - When crafting multiple leather at once using "shift-click", the workbench doesn't visually delete all the Rotten that was used.  This is just a visual artifact thought - the crafting works properly. The right amount of leather is created and the Rotten is actually consumed. Closing the crafting dialogue sets things right. 
 
 To do:
 
@@ -68,3 +73,4 @@ To do:
 
 Thanks:
   - Using THDigi / RecipeUtil for recipe compares.
+  - TfT-02 for lending his skills!
