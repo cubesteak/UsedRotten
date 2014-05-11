@@ -1,110 +1,154 @@
 package net.cubesteak.bukkit.UsedRotten;
 
+import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.CraftItemEvent;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.Material;
 
 import ro.thehunters.digi.recipeUtil.RecipeUtil;
 
 public class UsedRotten extends JavaPlugin implements Listener {
 
-	private ShapedRecipe leather;
-	private Boolean ConfigRottenCrafting;
-	private Integer ConfigRottenCraftingShape;
-	private Boolean ConfigRottenSmelting;
-	private Integer ReadShape;
-	
-	@Override
-	public void onEnable() {
-		getLogger().info("Ready to have UsedRotten!");
-		Server server = this.getServer();
+    private ShapedRecipe leather;
+    private Boolean ConfigRottenCrafting;
+    private Integer ConfigRottenCraftingShape;
+    private Boolean ConfigRottenSmelting;
+    private Integer ReadShape;
 
-		initializeConfig(); // Initialize the configuration
-		ConfigRottenCrafting = getConfig().getBoolean("UsedRotten.RottenCrafting");
-		ConfigRottenSmelting = getConfig().getBoolean("UsedRotten.RottenSmelting");
-		ConfigRottenCraftingShape = getConfig().getInt("UsedRotten.CraftingShape");
-		
-		
-		if (ConfigRottenCrafting) {
-		leather = new ShapedRecipe(new ItemStack(Material.LEATHER));
-		
-		// Setting the Shape Used
-		switch (ConfigRottenCraftingShape) {
-		case 1: leather.shape("F"); ReadShape = 1; break;
-		case 2: leather.shape("FF"); ReadShape = 2; break;
-		case 4: leather.shape("FF","FF"); ReadShape = 4; break;
-		case 6: leather.shape("FFF","FFF"); ReadShape = 6; break;
-		case 9: leather.shape("FFF","FFF","FFF"); ReadShape = 9; break;
-		default: leather.shape("FF","FF"); ReadShape = 4; break;
-		}
-		getLogger().info("Using " + ReadShape + " Rotten for Crafting");  // Log read Shape
-		
-		leather.setIngredient('F', Material.ROTTEN_FLESH);
-		server.addRecipe(leather);
-		}
-		
-		if (ConfigRottenSmelting){
-			FurnaceRecipe cookedleather = new FurnaceRecipe(new ItemStack(Material.LEATHER), (Material.ROTTEN_FLESH));
-			server.addRecipe(cookedleather);
-		}
-		
-	}
-	
-	@Override
-	public void onDisable() {
-		getLogger().info("Thank you for having UsedRotten!");
-	}
-	
-	private void initializeConfig() {
-		FileConfiguration config = getConfig(); 
-		
-		config.addDefault("UsedRotten.RottenCrafting", true);
-		config.addDefault("UsedRotten.CraftingShape", 4);
-		config.addDefault("UsedRotten.RottenSmelting", true);
-		
-		config.options().copyDefaults(true);
-		saveConfig();
-	}
-	
-	
-	 @EventHandler
-	    public void preCraft(PrepareItemCraftEvent event) // event is triggered when a recipe is found after placing ingredients
-	    {
-			// Storing the equality result because it's not cheap to compare recipes.
-	        // I'm doing this because I'm using it twice, if you're using it only once you don't need to store it.
-	        boolean equal = RecipeUtil.areEqual(event.getRecipe(), leather);
-	        
-	        // confirmation message of event triggering and recipe equality
-	        // System.out.print("(debug) recipes equal = " + equal);
-	        
-	        if(equal)
-	        {
-	            HumanEntity human = event.getView().getPlayer();
-	            
-	            // check if crafter has permission...
-	            if(!human.hasPermission("UsedRotten.Crafting"))
-	            {
-	                // basically cancels the event
-	                event.getInventory().setResult(null);
-	                
-	                // need to check because it could be NPCs or something
-	                if(human instanceof Player)
-	                {
-	                    Player player = (Player)human;
-	                    player.sendMessage("Need permission to craft this!");
-	                }
-	            }
-	        }
-	    }
-	
-	
+    @Override
+    public void onEnable() {
+        getLogger().info("Ready to have UsedRotten!");
+        Server server = this.getServer();
+
+        initializeConfig(); // Initialize the configuration
+        ConfigRottenCrafting = getConfig().getBoolean("UsedRotten.RottenCrafting");
+        ConfigRottenSmelting = getConfig().getBoolean("UsedRotten.RottenSmelting");
+        ConfigRottenCraftingShape = getConfig().getInt("UsedRotten.CraftingShape");
+
+        if (ConfigRottenCrafting) {
+            leather = new ShapedRecipe(new ItemStack(Material.LEATHER));
+
+            // Setting the Shape Used
+            switch (ConfigRottenCraftingShape) {
+                case 1:
+                    leather.shape("F");
+                    ReadShape = 1;
+                    break;
+                case 2:
+                    leather.shape("FF");
+                    ReadShape = 2;
+                    break;
+                case 4:
+                    leather.shape("FF", "FF");
+                    ReadShape = 4;
+                    break;
+                case 6:
+                    leather.shape("FFF", "FFF");
+                    ReadShape = 6;
+                    break;
+                case 9:
+                    leather.shape("FFF", "FFF", "FFF");
+                    ReadShape = 9;
+                    break;
+                default:
+                    leather.shape("FF", "FF");
+                    ReadShape = 4;
+                    break;
+            }
+            getLogger().info("Using " + ReadShape + " Rotten for Crafting");  // Log read Shape
+
+            leather.setIngredient('F', Material.ROTTEN_FLESH);
+            server.addRecipe(leather);
+        }
+
+        if (ConfigRottenSmelting) {
+            FurnaceRecipe cookedleather = new FurnaceRecipe(new ItemStack(Material.LEATHER), (Material.ROTTEN_FLESH));
+            server.addRecipe(cookedleather);
+        }
+    }
+
+    @Override
+    public void onDisable() {
+        getLogger().info("Thank you for having UsedRotten!");
+    }
+
+    private void initializeConfig() {
+        FileConfiguration config = getConfig();
+
+        config.addDefault("UsedRotten.RottenCrafting", true);
+        config.addDefault("UsedRotten.CraftingShape", 4);
+        config.addDefault("UsedRotten.RottenSmelting", true);
+
+        config.options().copyDefaults(true);
+        saveConfig();
+    }
+
+    /**
+     * Handle PrepareItemCraftEvent at the normal priority.
+     * <p/>
+     * These events are used to check permission to craft the recipe,
+     * the event is triggered when a recipe is found after placing
+     * ingredients.
+     *
+     * @param event The event to modify
+     */
+    @EventHandler(priority = EventPriority.NORMAL, ignoreCancelled = true)
+    public void onPrepareItemCraft(PrepareItemCraftEvent event) {
+        // Storing the equality result because it's not cheap to compare recipes.
+        // I'm doing this because I'm using it twice, if you're using it only once you don't need to store it.
+        boolean equal = RecipeUtil.areEqual(event.getRecipe(), leather);
+
+        // confirmation message of event triggering and recipe equality
+        // System.out.print("(debug) recipes equal = " + equal);
+
+        if (!equal) {
+            return;
+        }
+
+        HumanEntity human = event.getView().getPlayer();
+
+        // check if crafter has permission...
+        if (!human.hasPermission("UsedRotten.Crafting")) {
+            // basically cancels the event
+            event.getInventory().setResult(null);
+
+            // need to check because it could be NPCs or something
+            if (human instanceof Player) {
+                Player player = (Player) human;
+                player.sendMessage("Need permission to craft this!");
+            }
+        }
+    }
+
+    /**
+     * Monitor CraftItemEvent.
+     *
+     * @param event The event to monitor
+     */
+    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    public void onCraftItem(CraftItemEvent event) {
+        final HumanEntity whoClicked = event.getWhoClicked();
+
+        if (!(whoClicked instanceof Player)) {
+            return;
+        }
+
+        ItemStack result = event.getRecipe().getResult();
+
+        if (!result.isSimilar(new ItemStack(Material.LEATHER))) {
+            return;
+        }
+
+        new PlayerUpdateInventoryTask((Player) whoClicked).runTaskLater(this, 0);
+    }
 }
