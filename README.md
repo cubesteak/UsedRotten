@@ -1,7 +1,7 @@
 UsedRotten
 ==========
 
-Making Rotten Flesh useful in Bukkit.
+Making Rotten Flesh useful in Bukkit. 
 
 This is a very simple plugin for Bukkit.  Others have done it, but have lagged a bit behind bukkit updates.
 
