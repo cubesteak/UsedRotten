@@ -52,10 +52,11 @@ Install:
  - Set config file options to turn crafting and smelting on or off
  - Add permission for crafting if desired.
 
-Written for CraftBukkit Beta Build (1.7.2-R0.3)
+Written for CraftBukkit Beta Build (1.7.9-R0.2)
  
 Releases:
-0.3 - Latest. Bug fix for crafting multiple items at once, code cleanup and package name change to remove bukkit from the name.  Big thanks to TfT-02 for the help!
+0.4 - Latest. Updating plugin.yml to properly reflect new package name an update CraftBukkit to 1.7.9-R0.2 
+0.3 - Bug fix for crafting multiple items at once, code cleanup and package name change to remove bukkit from the name.  Big thanks to TfT-02 for the help!
 0.2 -  Adds config file, multiple crafting shapes and ability to enable crafting or smelting at a global level.
 0.11 - Just removes left over debug lines.
 0.1 - Initial release
