@@ -14,6 +14,7 @@ import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.NamespacedKey;
 
 import ro.thehunters.digi.recipeUtil.RecipeUtil;
 
@@ -24,8 +25,8 @@ public class UsedRotten extends JavaPlugin implements Listener {
     private Integer ConfigRottenCraftingShape;
     private Boolean ConfigRottenSmelting;
     private Integer ReadShape;
-
-    @Override
+    
+ 	@Override
     public void onEnable() {
         getLogger().info("Ready to have UsedRotten!");
         Server server = this.getServer();
@@ -36,7 +37,7 @@ public class UsedRotten extends JavaPlugin implements Listener {
         ConfigRottenCraftingShape = getConfig().getInt("UsedRotten.CraftingShape");
 
         if (ConfigRottenCrafting) {
-            leather = new ShapedRecipe(new ItemStack(Material.LEATHER));
+            leather = new ShapedRecipe(NamespacedKey.minecraft(getName()),new ItemStack(Material.LEATHER));
 
             // Setting the Shape Used
             switch (ConfigRottenCraftingShape) {

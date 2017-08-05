@@ -1,7 +1,7 @@
 UsedRotten
 ==========
 
-Making Rotten Flesh useful in Bukkit. 
+Making Rotten Flesh useful in Spigot/Bukkit/MC. 
 
 This is a very simple plugin for Bukkit.  Others have done it, but have lagged a bit behind bukkit updates.
 
@@ -52,10 +52,12 @@ Install:
  - Set config file options to turn crafting and smelting on or off
  - Add permission for crafting if desired.
 
-Written for CraftBukkit Beta Build (1.7.9-R0.2)
+Written for CraftBukkit 1.12.1
  
 Releases:
-0.4 - Latest. Updating plugin.yml to properly reflect new package name an update CraftBukkit to 1.7.9-R0.2
+0.5 - Updated to CraftBukkit 1.12.1
+
+0.4 - Updating plugin.yml to properly reflect new package name an update CraftBukkit to 1.7.9-R0.2
 
 0.3 - Bug fix for crafting multiple items at once, code cleanup and package name change to remove bukkit from the name.  Big thanks to TfT-02 for the help!
 
