@@ -33,10 +33,18 @@
 .idea/
 
 # Project Stuff
-/src/main/resources/UsedRotten
+/UsedRotten/bin/
+/UsedRotten/.classpath
+/UsedRotten/.project
+/UsedRotten/.settings
+/UsedRotten/out.jardesc
+
 
 # Other Libraries
 *.jar
 
 # Atlassian Stuff
 /atlassian-ide-plugin.xml
+
+# images
+/ImageFiles/

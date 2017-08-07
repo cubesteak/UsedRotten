@@ -2,6 +2,7 @@ package net.cubesteak.mcbk.UsedRotten;
 
 import org.bukkit.Material;
 import org.bukkit.Server;
+import org.bukkit.block.Furnace;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
@@ -9,6 +10,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
+import org.bukkit.event.inventory.FurnaceBurnEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.inventory.PrepareItemCraftEvent;
 import org.bukkit.inventory.FurnaceRecipe;
 import org.bukkit.inventory.ItemStack;
@@ -30,7 +34,7 @@ public class UsedRotten extends JavaPlugin implements Listener {
     public void onEnable() {
         getLogger().info("Ready to have UsedRotten!");
         Server server = this.getServer();
-
+        getServer().getPluginManager().registerEvents(this, this); // Register the custom events.
         initializeConfig(); // Initialize the configuration
         ConfigRottenCrafting = getConfig().getBoolean("UsedRotten.RottenCrafting");
         ConfigRottenSmelting = getConfig().getBoolean("UsedRotten.RottenSmelting");
@@ -152,4 +156,40 @@ public class UsedRotten extends JavaPlugin implements Listener {
 
         new PlayerUpdateInventoryTask((Player) whoClicked).runTaskLater(this, 0);
     }
+    
+    /**
+     * Monitor When Rotten is Smelted.
+     *
+     * @param event The event to monitor
+    */     
+    
+    
+    @EventHandler
+    public void furnaceBurn(FurnaceBurnEvent event) {
+        // Setting cookTime when the fuel is consumed
+        Furnace furnace = (Furnace) event.getBlock().getState();
+        furnace.update(true);
+    }
+    
+    @EventHandler(ignoreCancelled=true)
+    public void onInventoryClick(InventoryClickEvent event) {
+
+        if (event.getInventory().getType().equals(InventoryType.FURNACE)) {
+        	if (event.isShiftClick() || event.getRawSlot() == 0) {
+                boolean needsUpdate = event.isShiftClick();
+    
+                if (needsUpdate) {
+                    final Player p = (Player) event.getWhoClicked();
+                    getServer().getScheduler().runTaskLater(this, new Runnable() {
+                        @SuppressWarnings("deprecation")
+						public void run() {
+                            p.updateInventory();
+                        }
+                    }, 0);
+
+                }
+            }
+        }
+    }
+  
 }
