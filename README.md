@@ -1,6 +1,9 @@
 UsedRotten
 ==========
-
+  
+![UsedRottenImg](http://media-elerium.cursecdn.com/attachments/126/187/crafting.png "UsedRotten Image")
+  
+  
 Making Rotten Flesh useful in Spigot/Bukkit/MC. 
 
 This is a very simple plugin for Bukkit.  Others have done it, but have lagged a bit behind bukkit updates.
@@ -10,12 +13,12 @@ It adds:
  - rotten flesh in a configurable pattern on a crafting table will make 1 leather.  Default is 4 Rotten in a 2x2 pattern.
  - Rotten Flesh is also now cookable in a furnace to make leather.
 
-Permissions:
+### Permissions:
 
  - The permission UsedRotten.Crafting allows people to craft flesh to leather.
  - Working on a furnace permission, but none yet.
 
-Configuration:
+### Configuration:
  The configuration file allows turning Crafting and Smelting of Rotten on or off.
  Additionally, it allows you to pick how many Rotten are used for crafting.  The Crafting options are:
  
@@ -43,18 +46,18 @@ RRR
 RRR  
 RRR  
 
-Source Code:
+### Source Code:
 https://github.com/cubesteak/UsedRotten
 
-Install:
+### Install:
 
  - Download the jar file (from Files section) and place in server plugins directory.
  - Set config file options to turn crafting and smelting on or off
  - Add permission for crafting if desired.
 
-Written for CraftBukkit 1.12.1
+Developed against CraftBukkit 1.12.1
  
-Releases:
+### Releases:  
 0.5 - Updated to CraftBukkit 1.12.1
 
 0.4 - Updating plugin.yml to properly reflect new package name an update CraftBukkit to 1.7.9-R0.2
@@ -67,17 +70,17 @@ Releases:
 
 0.1 - Initial release
 
-Known Issues:
+### Known Issues:
 
- - When crafting multiple leather at once using "shift-click", the workbench doesn't visually delete all the Rotten that was used.  This is just a visual artifact thought - the crafting works properly. The right amount of leather is created and the Rotten is actually consumed. Closing the crafting dialogue sets things right. 
+- none
 
-To do:
+### To do(maybe):
 
  - Add furnace permissions
  - See if I can get a furnace to consume more than 1 flesh per leather created.
  - Allow configuration of output for both using a furnace or a Crafting Table
  
 
-Thanks:
+### Thanks:
   - Using THDigi / RecipeUtil for recipe compares.
   - TfT-02 for lending his skills!
