@@ -3,6 +3,7 @@ UsedRotten
   
 ![UsedRottenImg](http://media-elerium.cursecdn.com/attachments/126/187/crafting.png "UsedRotten Image")
   
+![Smelted Rotten](https://goo.gl/oGnRvG "Smelting Rotten Flesh")
   
 Making Rotten Flesh useful in Spigot/Bukkit/MC. 
 
