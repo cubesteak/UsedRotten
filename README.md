@@ -3,8 +3,6 @@ UsedRotten
   
 ![UsedRottenImg](http://media-elerium.cursecdn.com/attachments/126/187/crafting.png "UsedRotten Image")
   
-![Smelted Rotten](https://goo.gl/oGnRvG "Smelting Rotten Flesh")
-  
 Making Rotten Flesh useful in Spigot/Bukkit/MC. 
 
 This is a very simple plugin for Bukkit.  Others have done it, but have lagged a bit behind bukkit updates.
